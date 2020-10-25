@@ -1,0 +1,14 @@
+{
+  "name": "drill-pure-comms",
+  "version": "1.0.0",
+  "description": "Generates scrambles for 8-move pure comms. These do not necessarily use the UFR buffer.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cube-solver": "^2.4.0"
+  }
+}
