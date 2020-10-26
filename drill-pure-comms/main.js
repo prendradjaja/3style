@@ -10,7 +10,7 @@ function main() {
 
   const interchange   = interchangeFace   + randomChoice(["", "2", "'"]);
   const perpendicular = perpendicularFace + randomChoice(["", "'"]);
-  const opposite      = oppositeFace      + randomChoice(["", "'"]);
+  const opposite      = oppositeFace      + randomChoice(["", "'"]); // todo can also be a 180 turn?
 
   const insertion = `${perpendicular} ${opposite} ${inverse(perpendicular)}`;
 
