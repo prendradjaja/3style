@@ -14,8 +14,9 @@ def main():
             continue
         pairs.append(random.choice([x + y, y + x]))
     random.shuffle(pairs)
-    print()
-    for p in pairs:
+    for (i, p) in enumerate(pairs):
+        if i % 4 == 0:
+            print()
         print(p)
 
 
