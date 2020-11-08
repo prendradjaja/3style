@@ -2,7 +2,6 @@ const cases = require('./cases');
 const Cube = require('cubejs');
 
 const SEQUENCE_LENGTH = 4;
-const NUM_SEQUENCES = 3;
 
 function main() {
   // console.log("Initializing solver...");
@@ -19,14 +18,14 @@ function main() {
     // }
   ];
 
-  for (let j = 0; j < NUM_SEQUENCES; j++) {
-    const selectedCases =
-      new Array(SEQUENCE_LENGTH).fill(undefined)
-        .map(_ => randomChoice(Object.keys(cases)));
+  const x = shuffle(Object.keys(cases));
+
+  while (x.length) {
+    const selectedCases = x.splice(0, 4);
 
     const solutions = selectedCases.map(letterPair => cases[letterPair]);
 
-    for (let i = 0; i < SEQUENCE_LENGTH; i++) {
+    for (let i = 0; i < selectedCases.length; i++) {
       const flip = randomChoice([true, false]);
       if (flip) {
         selectedCases[i] =
@@ -67,6 +66,15 @@ function main() {
 function randomChoice(array) {
   return array[Math.floor(Math.random() * array.length)];
 }
+
+function shuffle(a) {
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
 
 // cubejs doesn't like R2' etc so change them to R2 etc
 function clean(alg) {
