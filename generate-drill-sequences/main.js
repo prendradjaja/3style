@@ -21,7 +21,7 @@ function main() {
 
   const casesToDrill = [
     ['BA', 'BD', 'BE', 'BF', 'BG'],
-    ['BI', 'BK', 'BL'],
+    ['HB', 'BI', 'BK', 'BL'],
     ['BO', 'BP', 'BR', 'BS', 'BT'],
     ['BU', 'BV', 'BW', 'BX'],
   ];
@@ -30,7 +30,7 @@ function main() {
     const solutions = selectedCases.map(letterPair => cases[letterPair]);
 
     for (let i = 0; i < SEQUENCE_LENGTH; i++) {
-      const flip = randomChoice([true, false]);
+      const flip = selectedCases[i] === 'HB';
       if (flip) {
         selectedCases[i] =
           Array.from(selectedCases[i])
