@@ -19,11 +19,14 @@ function main() {
     // }
   ];
 
-  for (let j = 0; j < NUM_SEQUENCES; j++) {
-    const selectedCases =
-      new Array(SEQUENCE_LENGTH).fill(undefined)
-        .map(_ => randomChoice(Object.keys(cases)));
+  const casesToDrill = [
+    ['BA', 'BD', 'BE', 'BF', 'BG'],
+    ['BI', 'BK', 'BL'],
+    ['BO', 'BP', 'BR', 'BS', 'BT'],
+    ['BU', 'BV', 'BW', 'BX'],
+  ];
 
+  for (let selectedCases of casesToDrill) {
     const solutions = selectedCases.map(letterPair => cases[letterPair]);
 
     for (let i = 0; i < SEQUENCE_LENGTH; i++) {
