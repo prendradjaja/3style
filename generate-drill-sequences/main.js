@@ -5,9 +5,19 @@ const SEQUENCE_LENGTH = 4;
 const NUM_SEQUENCES = 3;
 
 function main() {
-  console.log("Initializing solver...");
+  // console.log("Initializing solver...");
   Cube.initSolver();
-  console.log("Done.");
+  // console.log("Done.");
+
+  const result = [
+    // {
+    //   setup,
+    //   comms: Array<{
+    //     letterPair,
+    //     solution
+    //   }>
+    // }
+  ];
 
   for (let j = 0; j < NUM_SEQUENCES; j++) {
     const selectedCases =
@@ -30,9 +40,27 @@ function main() {
     const cube = new Cube();
     const fullSolution = solutions.join(' ');
     cube.move(clean(fullSolution));
+    result.push({
+      setup: cube.solve(),
+      comms: selectedCases.map((letterPair, i) => ({
+        letterPair,
+        solution: solutions[i]
+      }))
+    });
+  }
+
+  for (let item of result) {
+    console.log('// ' + item.setup);
+    console.log('// ' + item.comms.map(x => x.letterPair).join(' '));
     console.log();
-    console.log(cube.solve());
-    console.log(selectedCases);
+  }
+
+  for (let item of result) {
+    console.log(item.setup);
+    for (let comm of item.comms) {
+      console.log(`${comm.solution} // ${comm.letterPair}`);
+    }
+    console.log();
   }
 }
 
